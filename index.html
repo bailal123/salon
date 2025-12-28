@@ -831,6 +831,129 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        /* Collapsible Service Sections */
+        .section-preview {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(26,26,26,0.8);
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(212,175,55,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        .section-preview-image {
+            flex-shrink: 0;
+            width: 350px;
+            height: 280px;
+            border-radius: var(--border-radius);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .section-preview-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(212,175,55,0.2) 0%, transparent 50%);
+        }
+
+        .section-preview-content {
+            flex: 1;
+            padding: 20px 0;
+        }
+
+        .section-preview-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 16px;
+        }
+
+        .section-preview-content p {
+            color: rgba(255,255,255,0.8);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+        }
+
+        .learn-more-btn {
+            background: linear-gradient(135deg, #D4AF37 0%, #FFD700 50%, #B8860B 100%);
+            color: #0a0a0a;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 15px rgba(212,175,55,0.4);
+        }
+
+        .learn-more-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.5);
+        }
+
+        .learn-more-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .learn-more-btn.expanded svg {
+            transform: rotate(180deg);
+        }
+
+        .services-grid-collapsible {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 40px;
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .services-grid-collapsible.expanded {
+            max-height: 3000px;
+            opacity: 1;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .section-preview {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .section-preview-image {
+                width: 100%;
+                max-width: 350px;
+                height: 220px;
+            }
+
+            .section-preview-content h3 {
+                font-size: 1.6rem;
+            }
+
+            .services-grid-collapsible {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
 </head>
 <body>
@@ -879,11 +1002,26 @@
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
             <h2 class="section-title animate-on-scroll" style="color: #FFD700;">✨ BIAB SERVICES</h2>
-            <p class="section-subtitle animate-on-scroll animate-delay-2" style="color: rgba(212,175,55,0.8);">Builder in a Bottle treatments with Russian manicure techniques</p>
             
-            <div class="services-grid">
-                <div class="service-card glow animate-on-scroll animate-delay-1" role="article" aria-labelledby="biab-russian-title">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Professional BIAB nail treatment"></div>
+            <!-- Preview Card -->
+            <div class="section-preview animate-on-scroll animate-delay-1">
+                <div class="section-preview-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="section-preview-content">
+                    <h3>Builder in a Bottle</h3>
+                    <p>BIAB (Builder in a Bottle) is a revolutionary nail treatment that strengthens and protects your natural nails while providing a beautiful, long-lasting finish. Combined with Russian manicure techniques, we offer premium nail care treatments including extensions and pedicure services. Starting from €50.</p>
+                    <button class="learn-more-btn" onclick="toggleSection(this, 'biab-services')">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Collapsible Services Grid -->
+            <div class="services-grid-collapsible" id="biab-services">
+                <div class="service-card glow" role="article" aria-labelledby="biab-russian-title">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1519014816548-bf5fe059798b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Professional BIAB nail treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title" id="biab-russian-title">BIAB Treatment & Russian Manicure</h3>
                         <p class="service-description">Professional BIAB treatment combined with precise Russian manicure technique for long-lasting, natural-looking nails.</p>
@@ -897,8 +1035,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow animate-on-scroll animate-delay-2">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="BIAB treatment with pedicure"></div>
+                <div class="service-card glow">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1607779097040-26e80aa78e66?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="BIAB treatment with pedicure"></div>
                     <div class="service-content">
                         <h3 class="service-title">BIAB Treatment & Pedicure</h3>
                         <p class="service-description">Complete nail care with BIAB treatment and luxurious pedicure for both hands and feet.</p>
@@ -912,8 +1050,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow animate-on-scroll animate-delay-3">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Nail extensions treatment"></div>
+                <div class="service-card glow">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1631729371254-42c2892f0e6e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Nail extensions treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title">BIAB Treatment + Extensions + Manicure</h3>
                         <p class="service-description">Complete nail enhancement with BIAB, extensions, and professional manicure for stunning results.</p>
@@ -935,11 +1073,26 @@
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
             <h2 class="section-title animate-on-scroll" style="color: #FFD700;">💎 GEL-X EXTENSIONS</h2>
-            <p class="section-subtitle animate-on-scroll animate-delay-2" style="color: rgba(212,175,55,0.8);">Premium gel extensions in different lengths for your perfect look</p>
             
-            <div class="services-grid">
-                <div class="service-card glow floating animate-on-scroll animate-delay-1">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Short gel nail extensions"></div>
+            <!-- Preview Card -->
+            <div class="section-preview animate-on-scroll animate-delay-1">
+                <div class="section-preview-image" style="background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="section-preview-content">
+                    <h3>Premium Gel Extensions</h3>
+                    <p>Gel-X is a revolutionary soft gel nail extension system that provides a natural-looking, lightweight alternative to acrylics. Available in short, medium, and long lengths, perfect for everyday wear or glamorous occasions. Our premium extensions offer durability without damaging your natural nails. Starting from €45.</p>
+                    <button class="learn-more-btn" onclick="toggleSection(this, 'gelx-services')">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Collapsible Services Grid -->
+            <div class="services-grid-collapsible" id="gelx-services">
+                <div class="service-card glow floating">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1571290274554-6a2eaa771e5f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Short gel nail extensions"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gel-X Short</h3>
                         <p class="service-description">Perfect for everyday wear with natural length and professional finish.</p>
@@ -953,7 +1106,7 @@
                     </div>
                 </div>
 
-                <div class="service-card glow floating animate-on-scroll animate-delay-2" style="animation-delay: 0.5s;">
+                <div class="service-card glow floating">
                     <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Medium gel nail extensions"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gel-X Medium</h3>
@@ -968,7 +1121,7 @@
                     </div>
                 </div>
 
-                <div class="service-card glow floating animate-on-scroll animate-delay-3" style="animation-delay: 1s;">
+                <div class="service-card glow floating">
                     <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Long gel nail extensions"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gel-X Long</h3>
@@ -991,11 +1144,26 @@
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
             <h2 class="section-title animate-on-scroll" style="color: #FFD700;">🌸 GELLAC SERVICES</h2>
-            <p class="section-subtitle animate-on-scroll animate-delay-2" style="color: rgba(212,175,55,0.8);">Long-lasting gel polish treatments for hands and feet</p>
             
-            <div class="services-grid">
-                <div class="service-card glow animate-on-scroll animate-delay-1">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac manicure treatment"></div>
+            <!-- Preview Card -->
+            <div class="section-preview animate-on-scroll animate-delay-1">
+                <div class="section-preview-image" style="background-image: url('https://images.unsplash.com/photo-1599206676356-a6e55e59fa88?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="section-preview-content">
+                    <h3>Gel Polish Treatments</h3>
+                    <p>Gellac is a premium gel polish that provides chip-resistant, high-shine results lasting up to 3 weeks. Our treatments include complete manicure and pedicure services with professional gel polish application. Perfect for those who want beautiful, long-lasting nails without extensions. Starting from €40.</p>
+                    <button class="learn-more-btn" onclick="toggleSection(this, 'gellac-services')">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Collapsible Services Grid -->
+            <div class="services-grid-collapsible" id="gellac-services">
+                <div class="service-card glow">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac manicure treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gellac & Manicure</h3>
                         <p class="service-description">Professional gel polish application with complete manicure service for perfect hands.</p>
@@ -1009,8 +1177,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow animate-on-scroll animate-delay-2">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac pedicure treatment"></div>
+                <div class="service-card glow">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac pedicure treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gellac & Pedicure</h3>
                         <p class="service-description">Long-lasting gel polish with luxurious pedicure treatment for beautiful feet.</p>
@@ -1032,10 +1200,25 @@
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
             <h2 class="section-title animate-on-scroll" style="color: #FFD700;">🤍 HAND CARE EXTRAS</h2>
-            <p class="section-subtitle animate-on-scroll animate-delay-2" style="color: rgba(212,175,55,0.8);">Premium add-on treatments and combo packages</p>
             
-            <div class="services-grid">
-                <div class="service-card glow animate-on-scroll animate-delay-1">
+            <!-- Preview Card -->
+            <div class="section-preview animate-on-scroll animate-delay-1">
+                <div class="section-preview-image" style="background-image: url('https://images.unsplash.com/photo-1608248597279-f99d160bfcbc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="section-preview-content">
+                    <h3>Premium Hand Care</h3>
+                    <p>Pamper your hands with our luxurious add-on treatments and combo packages. From the Silk Hands Treatment featuring hand scrubs and deep moisturizing, to our exclusive combo packages that combine multiple services for the ultimate pampering experience. Perfect add-ons with any nail service. Starting from €8.</p>
+                    <button class="learn-more-btn" onclick="toggleSection(this, 'handcare-services')">
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Collapsible Services Grid -->
+            <div class="services-grid-collapsible" id="handcare-services">
+                <div class="service-card glow">
                     <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1556228578-8c89e6adf883?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="service-content">
                         <h3 class="service-title">✨ Silk Hands Treatment</h3>
@@ -1050,8 +1233,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow animate-on-scroll animate-delay-2">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
+                <div class="service-card glow">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="service-content">
                         <h3 class="service-title">🌸 Glow Hands Combo</h3>
                         <p class="service-description">Gellac or BIAB treatment combined with Silk Hands Treatment for the ultimate hand care.</p>
@@ -1065,7 +1248,7 @@
                     </div>
                 </div>
 
-                <div class="service-card glow animate-on-scroll animate-delay-3">
+                <div class="service-card glow">
                     <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="service-content">
                         <h3 class="service-title">💎 Luxury Nails & Care Combo</h3>
@@ -1386,6 +1569,22 @@
         const priceOffers = [];
         let navbarElement = null;
         let heroElement = null;
+        
+        // Toggle collapsible service sections
+        function toggleSection(btn, sectionId) {
+            const grid = document.getElementById(sectionId);
+            if (grid) {
+                grid.classList.toggle('expanded');
+                btn.classList.toggle('expanded');
+                
+                // Smooth scroll to the expanded content if opening
+                if (grid.classList.contains('expanded')) {
+                    setTimeout(() => {
+                        grid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    }, 100);
+                }
+            }
+        }
         
         // Animation initialization - Custom implementation for better performance
         const observeAnimations = () => {
