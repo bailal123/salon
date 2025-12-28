@@ -20,8 +20,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="dns-prefetch" href="https://wa.me">
+    <!-- Critical Font CSS Inline -->
+    <style>
+        @font-face {
+            font-family: 'Poppins';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('data:font/woff2;base64,') format('woff2');
+        }
+        @font-face {
+            font-family: 'Playfair Display';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url('data:font/woff2;base64,') format('woff2');
+        }
+        /* Fallback fonts */
+        body { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
+        .hero h1, .section-title, .service-title { font-family: 'Playfair Display', Georgia, serif; }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
     <!-- Inline critical Font Awesome icons -->
     <style>
         @font-face {
@@ -86,11 +107,11 @@
             --text-secondary: #f8fafc;
             --text-dark: #0f172a;
             --light: #ffffff;
-            --shadow-light: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-medium: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-heavy: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-light: 0 4px 6px -1px rgba(0,0,0,0.1);
+            --shadow-medium: 0 10px 15px -3px rgba(0,0,0,0.1);
+            --shadow-heavy: 0 20px 25px -5px rgba(0,0,0,0.1);
             --border-radius: 16px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
         }
 
         * {
@@ -136,7 +157,7 @@
         /* Hero Section */
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(90, 103, 216, 0.8) 100%), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(90, 103, 216, 0.8) 100%), url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -1051,7 +1072,7 @@
             
             <div class="services-grid">
                 <div class="service-card glow animate-on-scroll animate-delay-1" role="article" aria-labelledby="biab-russian-title">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Professional BIAB nail treatment"></div>
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Professional BIAB nail treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title" id="biab-russian-title">BIAB Treatment & Russian Manicure</h3>
                         <p class="service-description">Professional BIAB treatment combined with precise Russian manicure technique for long-lasting, natural-looking nails.</p>
@@ -1080,8 +1101,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow animate-on-scroll animate-delay-3">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Nail extensions treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title">BIAB Treatment + Extensions + Manicure</h3>
                         <p class="service-description">Complete nail enhancement with BIAB, extensions, and professional manicure for stunning results.</p>
@@ -1102,12 +1123,12 @@
     <section class="section" style="background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%); position: relative; overflow: hidden;">
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
-            <h2 class="section-title" data-aos="fade-up" style="color: #2d3748;">💎 GEL-X EXTENSIONS</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200" style="color: #4a5568;">Premium gel extensions in different lengths for your perfect look</p>
+            <h2 class="section-title animate-on-scroll" style="color: #2d3748;">💎 GEL-X EXTENSIONS</h2>
+            <p class="section-subtitle animate-on-scroll animate-delay-2" style="color: #4a5568;">Premium gel extensions in different lengths for your perfect look</p>
             
             <div class="services-grid">
-                <div class="service-card glow floating" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow floating animate-on-scroll animate-delay-1">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Short gel nail extensions"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gel-X Short</h3>
                         <p class="service-description">Perfect for everyday wear with natural length and professional finish.</p>
@@ -1121,8 +1142,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow floating" data-aos="fade-up" data-aos-delay="200" style="animation-delay: 0.5s;">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1562887284-5c6c9f0e7b8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow floating animate-on-scroll animate-delay-2" style="animation-delay: 0.5s;">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Medium gel nail extensions"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gel-X Medium</h3>
                         <p class="service-description">Elegant medium length extensions perfect for both casual and formal occasions.</p>
@@ -1136,8 +1157,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow floating" data-aos="fade-up" data-aos-delay="300" style="animation-delay: 1s;">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow floating animate-on-scroll animate-delay-3" style="animation-delay: 1s;">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Long gel nail extensions"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gel-X Long</h3>
                         <p class="service-description">Glamorous long extensions for those who love to make a statement with their nails.</p>
@@ -1158,12 +1179,12 @@
     <section class="section" style="background: linear-gradient(120deg, #a8edea 0%, #fed6e3 100%); position: relative; overflow: hidden;">
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
-            <h2 class="section-title" data-aos="fade-up" style="color: #2d3748;">🌸 GELLAC SERVICES</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200" style="color: #4a5568;">Long-lasting gel polish treatments for hands and feet</p>
+            <h2 class="section-title animate-on-scroll" style="color: #2d3748;">🌸 GELLAC SERVICES</h2>
+            <p class="section-subtitle animate-on-scroll animate-delay-2" style="color: #4a5568;">Long-lasting gel polish treatments for hands and feet</p>
             
             <div class="services-grid">
-                <div class="service-card glow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow animate-on-scroll animate-delay-1">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac manicure treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gellac & Manicure</h3>
                         <p class="service-description">Professional gel polish application with complete manicure service for perfect hands.</p>
@@ -1546,7 +1567,7 @@
     </a>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
     <script>
         // Initialize AOS (Animate On Scroll)
         AOS.init({
