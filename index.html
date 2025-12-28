@@ -21,7 +21,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="dns-prefetch" href="https://wa.me">
-    <!-- Critical Font CSS Inline -->
+
     <style>
         @font-face {
             font-family: 'Poppins';
@@ -37,12 +37,13 @@
             font-display: swap;
             src: url('data:font/woff2;base64,') format('woff2');
         }
-        /* Fallback fonts */
+
         body { font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; }
         .hero h1, .section-title, .service-title { font-family: 'Playfair Display', Georgia, serif; }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@300;400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"></noscript>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous">
     <!-- Inline critical Font Awesome icons -->
     <style>
         @font-face {
@@ -53,8 +54,12 @@
             src: url('data:font/woff2;base64,') format('woff2');
         }
         .fas, .fab {
-            font-family: 'Font Awesome 6 Free';
+            font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands';
             font-weight: 900;
+        }
+        .fab { 
+            font-family: 'Font Awesome 6 Brands'; 
+            font-weight: 400; 
         }
         .fa-sparkles:before { content: "\2728"; font-family: inherit; }
         .fa-whatsapp:before { content: "\f232"; }
@@ -127,7 +132,7 @@
             overflow-x: hidden;
         }
 
-        /* Skip Navigation for Accessibility */
+
         .skip-nav {
             position: absolute;
             top: -40px;
@@ -145,7 +150,7 @@
             top: 6px;
         }
 
-        /* Reduce Motion for Accessibility */
+
         @media (prefers-reduced-motion: reduce) {
             *, *::before, *::after {
                 animation-duration: 0.01ms !important;
@@ -154,10 +159,10 @@
             }
         }
 
-        /* Hero Section */
+
         .hero {
             height: 100vh;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(90, 103, 216, 0.8) 100%), url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(90, 103, 216, 0.8) 100%), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
@@ -290,7 +295,24 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.3);
         }
 
-                /* Custom Animations - Replacing AOS for better performance */
+        /* Custom Animations */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+        
+        .animate-on-scroll.fade-in {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-delay-1 { transition-delay: 0.1s; }
+        .animate-delay-2 { transition-delay: 0.2s; }
+        .animate-delay-3 { transition-delay: 0.3s; }
+        .animate-delay-4 { transition-delay: 0.4s; }
+        .animate-delay-5 { transition-delay: 0.5s; }
+        .animate-delay-6 { transition-delay: 0.6s; }
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1086,8 +1108,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1562887284-5c6c9f0e7b8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow animate-on-scroll animate-delay-2">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="BIAB treatment with pedicure"></div>
                     <div class="service-content">
                         <h3 class="service-title">BIAB Treatment & Pedicure</h3>
                         <p class="service-description">Complete nail care with BIAB treatment and luxurious pedicure for both hands and feet.</p>
@@ -1143,7 +1165,7 @@
                 </div>
 
                 <div class="service-card glow floating animate-on-scroll animate-delay-2" style="animation-delay: 0.5s;">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Medium gel nail extensions"></div>
+                    <div class="service-image" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC6bL1Iut_DPzKJmrZAnjNStn8sU9k7a6kuQY83TREHRl6ckY-ojQpnyFaoLkyVgBcVogB0CmfNfc42UpiyHq1O2D8E4LHeEDCeo77dj4P6uAZtjlSGAIYCWFVHqbtjAO6H7MueR1DJqD3kZfNtgTtWOZ-jHxG5VndOcyp5_j2uj-7BuBAqKmBpzA72GXOV_wWT7JC_7-a6MH9HszHqT5eEfRwdoZzIPAvUhYzmu-NTGVI47aZd3QXOXOZ31oytl4fCqiQOXH3p1r9p')" role="img" aria-label="Hair extensions treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gel-X Medium</h3>
                         <p class="service-description">Elegant medium length extensions perfect for both casual and formal occasions.</p>
@@ -1198,8 +1220,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1562887284-5c6c9f0e7b8a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow animate-on-scroll animate-delay-2">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1587654780221-a129fb896b74?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac pedicure treatment"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gellac & Pedicure</h3>
                         <p class="service-description">Long-lasting gel polish with luxurious pedicure treatment for beautiful feet.</p>
@@ -1220,12 +1242,12 @@
     <section class="section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 70%, #f5576c 100%); position: relative; overflow: hidden;">
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
-            <h2 class="section-title" data-aos="fade-up" style="color: #ffffff;">🤍 HAND CARE EXTRAS</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200" style="color: rgba(255,255,255,0.9);">Premium add-on treatments and combo packages</p>
+            <h2 class="section-title animate-on-scroll" style="color: #ffffff;">🤍 HAND CARE EXTRAS</h2>
+            <p class="section-subtitle animate-on-scroll animate-delay-2" style="color: rgba(255,255,255,0.9);">Premium add-on treatments and combo packages</p>
             
             <div class="services-grid">
-                <div class="service-card glow" data-aos="fade-up" data-aos-delay="100">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow animate-on-scroll animate-delay-1">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1583426773551-74d440642117?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="service-content">
                         <h3 class="service-title">✨ Silk Hands Treatment</h3>
                         <p class="service-description">Luxurious hand scrub, mask, and deep moisturizing treatment for silky smooth hands.</p>
@@ -1239,8 +1261,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow" data-aos="fade-up" data-aos-delay="200">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow animate-on-scroll animate-delay-2">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1604654894610-df63bc536371?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="service-content">
                         <h3 class="service-title">🌸 Glow Hands Combo</h3>
                         <p class="service-description">Gellac or BIAB treatment combined with Silk Hands Treatment for the ultimate hand care.</p>
@@ -1254,8 +1276,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow" data-aos="fade-up" data-aos-delay="300">
-                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80')"></div>
+                <div class="service-card glow animate-on-scroll animate-delay-3">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1610992015732-2449b76344bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')"></div>
                     <div class="service-content">
                         <h3 class="service-title">💎 Luxury Nails & Care Combo</h3>
                         <p class="service-description">Gel-X or BIAB with Russian Manicure plus Silk Hands Treatment - the ultimate luxury experience.</p>
@@ -1275,13 +1297,13 @@
     <!-- VIP Packages -->
     <section id="vip" class="section vip-section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up" style="-webkit-text-fill-color: white;">🌸 VIP BENEFITS</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200" style="color: rgba(255,255,255,0.8);">
+            <h2 class="section-title"  style="-webkit-text-fill-color: white;">🌸 VIP BENEFITS</h2>
+            <p class="section-subtitle"   style="color: rgba(255,255,255,0.8);">
                 ✔ Priority booking | ✔ Special VIP-only offers | ✔ Exclusive care treatments | ✔ Valid for loyal clients only
             </p>
             
             <div class="vip-cards">
-                <div class="vip-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="vip-card"  >
                     <div class="vip-title">👑 VIP GOLD</div>
                     <p>Our most popular package</p>
                     <div class="vip-price">€120<span style="font-size: 1rem;">/month</span></div>
@@ -1297,7 +1319,7 @@
                     </a>
                 </div>
 
-                <div class="vip-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="vip-card"  >
                     <div class="vip-title">👑 VIP DIAMOND</div>
                     <p>Luxury care – all in one</p>
                     <div class="vip-price">€160<span style="font-size: 1rem;">/month</span></div>
@@ -1320,11 +1342,11 @@
     <section id="beauty" class="section" style="background: linear-gradient(60deg, #ff9a9e 0%, #fecfef 25%, #fecfef 75%, #ff9a9e 100%); position: relative; overflow: hidden;">
         <div class="section-bg-pattern"></div>
         <div class="container" style="position: relative; z-index: 2;">
-            <h2 class="section-title" data-aos="fade-up" style="color: #2d3748;">BEAUTY & CARE SERVICES ✨</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200" style="color: #4a5568;">Complete beauty treatments for face and body</p>
+            <h2 class="section-title"  style="color: #2d3748;">BEAUTY & CARE SERVICES ✨</h2>
+            <p class="section-subtitle"   style="color: #4a5568;">Complete beauty treatments for face and body</p>
             
             <div class="beauty-grid">
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="100">
+                <div class="beauty-category"  >
                     <h3>🌿 Facial Treatments</h3>
                     <div class="beauty-item">
                         <span>Deep Cleansing</span>
@@ -1355,7 +1377,7 @@
                     </a>
                 </div>
 
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="200">
+                <div class="beauty-category"  >
                     <h3>🌸 Waxing Services</h3>
                     <div class="beauty-item">
                         <span>Full Face</span>
@@ -1374,7 +1396,7 @@
                     </a>
                 </div>
 
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="300">
+                <div class="beauty-category"  >
                     <h3>✨ Laser Hair Removal</h3>
                     <div class="beauty-item">
                         <span>Face</span>
@@ -1409,7 +1431,7 @@
                     </a>
                 </div>
 
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="400">
+                <div class="beauty-category"  >
                     <h3>👁️ Lash Services</h3>
                     <div class="beauty-item">
                         <span>One by One</span>
@@ -1432,7 +1454,7 @@
                     </a>
                 </div>
 
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="500">
+                <div class="beauty-category"  >
                     <h3>✨ Eyebrow Services</h3>
                     <div class="beauty-item">
                         <span>Brow Lamination + Tint</span>
@@ -1451,7 +1473,7 @@
                     </a>
                 </div>
 
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="600">
+                <div class="beauty-category"  >
                     <h3>🌿 Japanese Head Spa</h3>
                     <div class="beauty-item">
                         <span>Head Spa</span>
@@ -1466,7 +1488,7 @@
                     </a>
                 </div>
 
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="700">
+                <div class="beauty-category"  >
                     <h3>💄 PMU Services</h3>
                     <div class="beauty-item">
                         <span>Lip PMU</span>
@@ -1489,7 +1511,7 @@
                     </a>
                 </div>
 
-                <div class="beauty-category" data-aos="fade-up" data-aos-delay="800">
+                <div class="beauty-category"  >
                     <h3>💇‍♀️ Hair Extensions</h3>
                     <div class="beauty-item">
                         <span>Consultation & Advice</span>
@@ -1514,11 +1536,11 @@
     <!-- Contact & Map -->
     <section id="contact" class="section contact-section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
-            <p class="section-subtitle" data-aos="fade-up" data-aos-delay="200">Visit us or contact us for appointments</p>
+            <h2 class="section-title" >Get In Touch</h2>
+            <p class="section-subtitle"  >Visit us or contact us for appointments</p>
             
             <div class="contact-content">
-                <div class="contact-info" data-aos="fade-right" data-aos-delay="300">
+                <div class="contact-info"  >
                     <h3>Contact Information</h3>
                     <div class="contact-details">
                         <div class="contact-item">
@@ -1539,7 +1561,7 @@
                     </a>
                 </div>
                 
-                <div class="map-container" data-aos="fade-left" data-aos-delay="300">
+                <div class="map-container"  >
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2435.550!2d4.8952!3d52.3702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c609c3db87e4bb%3A0xb3a175cdc0dc61a1!2sAmsterdam%2C%20Netherlands!5e0!3m2!1sen!2snl" loading="lazy" title="Mina Skin Clinic location map" aria-label="Interactive map showing Mina Skin Clinic location"></iframe>
                 </div>
             </div>
@@ -1557,7 +1579,7 @@
                 <a href="#" aria-label="Follow us on Instagram" role="listitem"><i class="fab fa-instagram" aria-hidden="true"></i></a>
                 <a href="#" aria-label="Like us on Facebook" role="listitem"><i class="fab fa-facebook" aria-hidden="true"></i></a>
             </div>
-            <p>&copy; 2024 Mina Skin Clinic. All rights reserved.</p>
+            <p>&copy; 2025 Mina Skin Clinic. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1569,22 +1591,26 @@
     <!-- Scripts -->
 
     <script>
-        // Initialize AOS (Animate On Scroll)
-        AOS.init({
-            duration: 1000,
-            easing: 'ease-in-out-quart',
-            once: true
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+        // Animation initialization - Custom implementation for better performance
+        
+        // Intersection Observer for animations
+        const observeAnimations = () => {
+            const animatedElements = document.querySelectorAll('.animate-on-scroll');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1, rootMargin: '50px' });
+            
+            animatedElements.forEach(el => observer.observe(el));
+        };
+        
+        // Initialize animations after DOM is loaded
+        document.addEventListener('DOMContentLoaded', observeAnimations);
 
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1599,18 +1625,32 @@
                 }
             });
         });
-
+        
         // Add loading animation
         window.addEventListener('load', function() {
             document.body.classList.add('loaded');
         });
 
-        // Parallax effect for hero section
+
+
+        let scrollTicking = false;
         window.addEventListener('scroll', function() {
-            const scrolled = window.pageYOffset;
-            const hero = document.querySelector('.hero');
-            if (hero) {
-                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            if (!scrollTicking) {
+                requestAnimationFrame(function() {
+                    const navbar = document.getElementById('navbar');
+                    if (window.scrollY > 100) {
+                        navbar.classList.add('scrolled');
+                    } else {
+                        navbar.classList.remove('scrolled');
+                    }
+                    const scrolled = window.pageYOffset;
+                    const hero = document.querySelector('.hero');
+                    if (hero) {
+                        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+                    }
+                    scrollTicking = false;
+                });
+                scrollTicking = true;
             }
         });
 
@@ -1685,3 +1725,4 @@
     </script>
 </body>
 </html>
+
