@@ -1419,15 +1419,13 @@
         });
 
         let scrollTicking = false;
+        let lastScrollY = 0;
         window.addEventListener('scroll', function() {
             if (!scrollTicking) {
+                lastScrollY = window.scrollY;
                 requestAnimationFrame(function() {
-                    const scrollY = window.scrollY;
                     if (navbarElement) {
-                        navbarElement.classList.toggle('scrolled', scrollY > 100);
-                    }
-                    if (heroElement) {
-                        heroElement.style.transform = 'translateY(' + (scrollY * 0.5) + 'px)';
+                        navbarElement.classList.toggle('scrolled', lastScrollY > 100);
                     }
                     scrollTicking = false;
                 });
