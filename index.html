@@ -734,6 +734,22 @@
 
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
+            .hero {
+                background-attachment: scroll;
+            }
+            
+            .hero::before {
+                animation: none;
+            }
+            
+            .parallax {
+                background-attachment: scroll;
+            }
+            
+            .floating {
+                animation: none;
+            }
+            
             .hero h1 {
                 font-size: 2.5rem;
             }
@@ -952,6 +968,14 @@
 
             .services-grid-collapsible {
                 grid-template-columns: 1fr;
+            }
+            
+            .glow {
+                box-shadow: none;
+            }
+            
+            .glow:hover {
+                box-shadow: 0 0 15px rgba(212,175,55,0.3);
             }
         }
     </style>
@@ -1564,40 +1588,45 @@
     <!-- Scripts -->
 
     <script>
-        // Cache DOM elements to avoid forced reflow
+        // Check if mobile device
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+        
+        // Cache DOM elements
         let navbarElement = null;
         let isScrolled = false;
         
-        // Toggle collapsible service sections - optimized
+        // Toggle collapsible sections
         function toggleSection(btn, sectionId) {
             const grid = document.getElementById(sectionId);
             if (!grid) return;
             const isExpanding = !grid.classList.contains('expanded');
-            // Batch DOM writes
-            requestAnimationFrame(() => {
-                grid.classList.toggle('expanded', isExpanding);
-                btn.classList.toggle('expanded', isExpanding);
-            });
+            grid.classList.toggle('expanded', isExpanding);
+            btn.classList.toggle('expanded', isExpanding);
         }
         
-        // Animation observer - optimized
+        // Animation observer - skip on mobile for better performance
         function observeAnimations() {
             const els = document.querySelectorAll('.animate-on-scroll');
             if (!els.length) return;
+            
+            if (isMobile) {
+                // On mobile, show all elements immediately without animation
+                els.forEach(el => el.classList.add('fade-in'));
+                return;
+            }
+            
             const io = new IntersectionObserver((entries) => {
-                requestAnimationFrame(() => {
-                    entries.forEach(e => {
-                        if (e.isIntersecting) {
-                            e.target.classList.add('fade-in');
-                            io.unobserve(e.target);
-                        }
-                    });
+                entries.forEach(e => {
+                    if (e.isIntersecting) {
+                        e.target.classList.add('fade-in');
+                        io.unobserve(e.target);
+                    }
                 });
             }, { threshold: 0.1, rootMargin: '50px' });
             els.forEach(el => io.observe(el));
         }
         
-        // Smooth scroll - optimized
+        // Smooth scroll
         function setupSmoothScroll() {
             document.querySelectorAll('a[href^="#"]').forEach(a => {
                 a.addEventListener('click', function(e) {
@@ -1616,7 +1645,7 @@
         
         window.addEventListener('load', () => document.body.classList.add('loaded'));
 
-        // Scroll handler - optimized with state check
+        // Scroll handler - simplified for mobile
         let ticking = false;
         window.addEventListener('scroll', function() {
             if (!ticking) {
