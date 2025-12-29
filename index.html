@@ -1702,8 +1702,17 @@
     <!-- Scripts -->
 
     <script>
-        // Check if mobile device
-        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+        // Check if mobile device - cache result to avoid repeated reflows
+        let isMobile;
+        
+        // Use matchMedia instead of innerWidth to avoid forced reflow
+        function checkMobile() {
+            if (typeof isMobile === 'undefined') {
+                const mobileQuery = window.matchMedia('(max-width: 767px)');
+                isMobile = mobileQuery.matches || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            }
+            return isMobile;
+        }
         
         // Cache DOM elements
         let navbarElement = null;
@@ -1723,18 +1732,22 @@
             const els = document.querySelectorAll('.animate-on-scroll');
             if (!els.length) return;
             
-            if (isMobile) {
+            if (checkMobile()) {
                 // On mobile, show all elements immediately without animation
-                els.forEach(el => el.classList.add('fade-in'));
+                requestAnimationFrame(() => {
+                    els.forEach(el => el.classList.add('fade-in'));
+                });
                 return;
             }
             
             const io = new IntersectionObserver((entries) => {
-                entries.forEach(e => {
-                    if (e.isIntersecting) {
-                        e.target.classList.add('fade-in');
-                        io.unobserve(e.target);
-                    }
+                requestAnimationFrame(() => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) {
+                            e.target.classList.add('fade-in');
+                            io.unobserve(e.target);
+                        }
+                    });
                 });
             }, { threshold: 0.1, rootMargin: '50px' });
             els.forEach(el => io.observe(el));
@@ -1750,22 +1763,38 @@
             });
         }
         
-        // Initialize
+        // Initialize - use requestIdleCallback for non-critical tasks
         document.addEventListener('DOMContentLoaded', function() {
             navbarElement = document.getElementById('navbar');
-            observeAnimations();
-            setupSmoothScroll();
+            
+            // Defer non-critical initialization
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(() => {
+                    observeAnimations();
+                    setupSmoothScroll();
+                }, { timeout: 100 });
+            } else {
+                setTimeout(() => {
+                    observeAnimations();
+                    setupSmoothScroll();
+                }, 0);
+            }
         });
         
-        window.addEventListener('load', () => document.body.classList.add('loaded'));
+        window.addEventListener('load', () => {
+            requestAnimationFrame(() => document.body.classList.add('loaded'));
+        });
 
-        // Scroll handler - simplified for mobile
+        // Scroll handler - optimized with passive listener and RAF
         let ticking = false;
+        let lastScrollY = 0;
+        
         window.addEventListener('scroll', function() {
+            lastScrollY = window.pageYOffset;
             if (!ticking) {
                 ticking = true;
                 requestAnimationFrame(() => {
-                    const shouldScroll = window.scrollY > 100;
+                    const shouldScroll = lastScrollY > 100;
                     if (navbarElement && isScrolled !== shouldScroll) {
                         isScrolled = shouldScroll;
                         navbarElement.classList.toggle('scrolled', shouldScroll);
