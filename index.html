@@ -24,7 +24,7 @@
     <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
     <link rel="dns-prefetch" href="https://wa.me">
     <!-- LCP Image Preload -->
-    <link rel="preload" as="image" href="images/compressed-image.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="logo.webp" fetchpriority="high">
     <style>
         @font-face{font-family:'Poppins';font-style:normal;font-weight:400;font-display:swap;src:url('data:font/woff2;base64,') format('woff2');}
         @font-face{font-family:'Air Quets';font-style:normal;font-weight:400;font-display:swap;src:url('data:font/woff2;base64,') format('woff2');}
@@ -1092,7 +1092,7 @@
     <nav class="navbar" id="navbar" role="navigation" aria-label="Hoofdnavigatie">
         <div class="nav-container">
             <a href="#home" class="logo" aria-label="Mina Skin Clinic Home">
-                <img src="logo.webp" alt="Mina Skin Clinic Logo" width="128" height="47" loading="eager" decoding="async" style="height:55px;width:auto;max-width:150px;border-radius:10px;vertical-align:middle;margin-right:12px;object-fit:contain">
+                <img src="logo.webp" alt="Mina Skin Clinic Logo" width="156" height="96" loading="eager" decoding="async" fetchpriority="high" style="height:55px;width:auto;max-width:150px;border-radius:10px;vertical-align:middle;margin-right:12px;object-fit:contain">
                 Mina Skin Clinic
             </a>
             <ul class="nav-links" role="menubar">
@@ -1586,8 +1586,8 @@
                     </div>
                 </div>
 
-                <div class="service-card glow">https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.
-                    <div class="service-image" style="background-image: url('3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac pedicure behandeling"></div>
+                <div class="service-card glow">
+                    <div class="service-image" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')" role="img" aria-label="Gellac pedicure behandeling"></div>
                     <div class="service-content">
                         <h3 class="service-title">Gellac & Pedicure</h3>
                         <p class="service-description">Langdurige gellak met luxe pedicurebehandeling voor mooie voeten.</p>
@@ -1849,9 +1849,9 @@
     <!-- Footer -->
     <footer class="footer" role="contentinfo">
         <div class="container">
-            <div class="logo" style="color: #F472B6; font-size: 1.5rem;">
+            <div class="footer-logo" style="text-align:center;">
                 <img src="logo.webp" alt="Mina Skin Clinic Logo" width="170" height="64" loading="lazy" decoding="async" style="height:80px;width:auto;max-width:200px;border-radius:12px;margin-bottom:15px;display:block;margin-left:auto;margin-right:auto;object-fit:contain">
-                Mina Skin Clinic
+                <div style="color: #F472B6; font-size: 1.5rem; font-family: 'Air Quets', serif;">Mina Skin Clinic</div>
             </div>
             <p style="color: rgba(236,72,153,0.8);">Premium Beauty & Skincare Treatments</p>
             <div class="social-links" role="list" aria-label="Social media links">
